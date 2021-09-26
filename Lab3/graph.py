@@ -309,6 +309,13 @@ def circle(x, y, R):
     )
     return circ
 
+def oval(x1, y1, x2, y2):
+    ov = _C.create_oval(
+            x1, y1, x2, y2,
+            outline=_penColor, width=_penSize, fill=_brushColor
+    )
+    return ov
+
 
 def polygon(points):
     coord = unpackCoord(points)
