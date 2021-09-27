@@ -25,6 +25,10 @@ oval(175, 80, 850, 180)
 oval(200, 350, 820, 450)
 
 def ufo(x,y,r):
+	"""function drawing a UFO
+	x, y - coordinates of the centre of the dark grey ellipse
+	r - proportionality coefficient to case when size of grey ellipse is 250x75
+	"""
 	brushColor("white")
 	penColor("white")
 	polygon([(x,y-17.5*r), (x-90*r, y+350*r), (x+90*r, y+350*r)])
@@ -53,6 +57,10 @@ ufo(350, 450, 0.25)
 
 
 def et(x,y,r):	
+	"""function drawing an et with apple
+	x, y - coordinates of the highest point of the body ellipse,
+	r - proportionality coefficient to case when body ellipse size is 50x100
+	"""
 	brushColor("DarkSeaGreen")
 	penColor("DarkSeaGreen")
 	oval(x+30*r, y, x+80*r, y+100*r)
@@ -115,3 +123,5 @@ et(300,600,0.2)
 et(250,550, 0.2)
 
 run()
+
+
