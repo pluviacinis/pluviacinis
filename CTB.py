@@ -11,11 +11,11 @@ canv.pack(fill=BOTH,expand=1)
 colors = ['red','orange','yellow','green','blue']
 balls=[]
 superballs=[]
-
+name=str(input('Введите имя: '))
 n=int(input('Введите количество мишеней: '))
 m=rndi(1,n//4)
 n -= m
-
+endflag=0
 class Ball(object):
         # Класс цветных шариков.
         # x, y - координаты, r - радиус
@@ -100,30 +100,52 @@ def motion():
                 canv.create_oval(superballs[i].x - superballs[i].r, superballs[i].y - superballs[i].r, superballs[i].x + superballs[i].r, superballs[i].y + superballs[i].r, fill=superballs[i].color2, width=0)
                 canv.create_oval(superballs[i].x - 0.5*superballs[i].r, superballs[i].y - 0.5*superballs[i].r, superballs[i].x + 0.5*superballs[i].r, superballs[i].y + 0.5*superballs[i].r, fill=superballs[i].color1, width=0)
 
-
-        root.after(3, motion)
+        if endflag==0:
+                root.after(3, motion)
 
 def click(event):
         global points
-        for i in range(len(balls)):
+        i=0
+        while i <(len(balls)):
                 if math.sqrt((balls[i].x - event.x)**2+(balls[i].y - event.y)**2) <= balls[i].r:
                         points += 1
                         canv.delete(balls[i])
                         balls.pop(i)
-        for i in range(len(superballs)):
+                i=i+1
+        i=0
+        while i <(len(superballs)):
                 if math.sqrt((superballs[i].x - event.x)**2+(superballs[i].y - event.y)**2) <= superballs[i].r:
                         points += 3
                         canv.delete(superballs[i])
                         superballs.pop(i)
-                l['text']=('Счет: ',str(points))
+                i+=1
+        l['text']=('Счет: ',str(points))
         if len(balls)==0:
                 new_balls()
         elif len(superballs)==0:
                 new_superballs()
+def tab(event):
+	out = open('table.txt', 'r')
+	canv.create_text(400, 500, text = out.read(), justify = CENTER, font="Arial 14")
+	out.close()
+	canv.bind('<Button-3>', '')
+
+
+def finish(event):
+	global points, name, endflag
+	endflag=1
+	canv.delete(ALL)
+	inp = open('table.txt', 'a')
+	print (name, points, file=inp)
+	inp.close()
+	canv.bind('<Button-3>', tab)
+	canv.delete(ALL)
+	
+	
 l.pack()
 motion()
 
 canv.bind('<Button-1>', click)
-canv.bind('<Button-3>', new_balls)
-
+canv.bind('<Button-3>', finish)
+canv.bind
 mainloop()
