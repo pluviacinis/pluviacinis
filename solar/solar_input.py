@@ -47,16 +47,16 @@ def parse_star_parameters(line, star):
     **line** — строка с описание звезды.
     **star** — объект звезды.
     """
-    tokens = line.split()
-    assert(tokens[0].lower() == 'star')
-    assert(len(tokens) == 8)
-    star.R = int(tokens[1])
-    star.color = tokens[2]
-    star.m = float(tokens[3])
-    star.x = float(tokens[4])
-    star.y = float(tokens[5])
-    star.Vx = float(tokens[6])
-    star.Vy = float(tokens[7])
+    StData = line.split()
+    assert(StData[0].lower() == 'star')
+    assert(len(StData) == 8)
+    star.R = int(StData[1])
+    star.color = StData[2]
+    star.m = float(StData[3])
+    star.x = float(StData[4])
+    star.y = float(StData[5])
+    star.Vx = float(StData[6])
+    star.Vy = float(StData[7])
 
 
 
@@ -76,16 +76,16 @@ def parse_planet_parameters(line, planet):
     **planet** — объект планеты.
     """
 
-    tokens = line.split()
-    assert(tokens[0].lower() == 'planet')
-    assert(len(tokens) == 8)
-    planet.R = int(tokens[1])
-    planet.color = tokens[2]
-    planet.m = float(tokens[3])
-    planet.x = float(tokens[4])
-    planet.y = float(tokens[5])
-    planet.Vx = float(tokens[6])
-    planet.Vy = float(tokens[7])
+    PlData = line.split()
+    assert(PlData[0].lower() == 'planet')
+    assert(len(PlData) == 8)
+    planet.R = int(PlData[1])
+    planet.color = PlData[2]
+    planet.m = float(PlData[3])
+    planet.x = float(PlData[4])
+    planet.y = float(PlData[5])
+    planet.Vx = float(PlData[6])
+    planet.Vy = float(PlData[7])
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
@@ -101,8 +101,7 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     """
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
-            print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
-            # FIXME: should store real values
+            print("%f %s %f %f %f %f %f" % (obj.R, obj.color, obj.m, obj.x, obj.y, obj.Vx, obj.Vy), file=out_file)
 
 # FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
 
