@@ -1,0 +1,29 @@
+import matplotlib.pyplot as plt
+first = [16 , 18, 20, 22, 24]
+second = [20, 20, 18, 22, 20]
+third = [24, 22, 20, 18, 16]
+colors = ['red', 'orange', 'yellow', 'green', 'blue' ]
+labels = ['А.', 'Б.', 'B.', 'Г.', 'Д.']
+x = [1, 2, 3, 4, 5]
+plt.subplot(3,2,1)
+plt.figure(num=1, figsize=(1, 1))
+plt.bar(x, first, color=colors, edgecolor ='k', tick_label=labels)
+plt.grid(True, axis='y')
+plt.subplot(3,2,2)
+plt.figure(num=1, figsize=(1, 1))
+plt.bar(x, second, color=colors, edgecolor ='k', tick_label=labels)
+plt.grid(True, axis='y')
+plt.subplot(3,2,3)
+plt.figure(num=1, figsize=(1, 1))
+plt.bar(x, third, color=colors, edgecolor ='k', tick_label=labels)
+plt.grid(True, axis='y')
+plt.subplot(3,2,4)
+plt.title('Pie1', size=5)
+plt.pie(first, labels=labels)
+plt.subplot(3,2,5)
+plt.title('Pie2', size=5)
+plt.pie(second, labels=labels)
+plt.subplot(3,2,6)
+plt.title('Pie3', size=5)
+plt.pie(third, labels=labels)
+plt.show()
