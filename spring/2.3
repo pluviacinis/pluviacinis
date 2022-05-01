@@ -1,0 +1,52 @@
+import numpy as np
+import matplotlib.pyplot as plt
+def Cor(x,y):
+    devx= np.std(x)
+    devy= np.std(y)
+    nx=len(x)
+    Sum=[]
+    for i in range(nx):
+        sl = (((x[i]-np.mean(x))/devx)*((y[i]-np.mean(y))/devy))
+        Sum.append(sl)
+    E=np.sum(Sum)
+    r=E/nx
+    return r
+
+x1 = [1, 2, 3, 4, 5]
+y1 = [0.99, 0.49, 0.35, 0.253, 0.18]
+
+x2 = np.random.rand(100)
+y2 = np.random.rand(100)
+
+data = 10 * np.random.rand(100)
+x3 = np.sort(data) 
+epsilon3 = np.random.rand(100)
+y3 = (x3-5)**2 / 10 + epsilon3 - 0.5
+
+data1 = open("mutant.txt", "r").readlines()
+data2 = open("wild_type.txt", "r").readlines()
+n1= len(data1)
+n2 = len(data2)
+
+x4=[]
+x5=[]
+y4=[]
+y5=[]
+for i in range(1,n1):
+    k=data1[i].split()
+    l1=float(k[0])
+    l2=float(k[1])
+    x4.append(l1)
+    y4.append(l2)
+for i in range(1,n2):
+    k=data2[i].split()
+    l1=float(k[0])
+    l2=float(k[1])
+    x5.append(l1)
+    y5.append(l2)
+
+print('R 1 =', Cor(x1,y1))
+print('R 2 =', Cor(x2,y2))
+print('R 3 =', Cor(x3,y3))
+print('R Mut =', Cor(x4,y4))
+print('R WT =', Cor(x5,y5))
