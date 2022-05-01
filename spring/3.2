@@ -1,0 +1,19 @@
+import numpy as np
+
+def data(filename):
+    data=open(filename, 'r').readlines()
+    x=[]
+    for i in range(len(data)):
+        k=data[i].split()
+        for j in range(len(k)):
+            x.append(float(k[j]))
+        x=np.array(x)
+        return x, len(k)
+x1,n1=data('ex2_1.txt')
+x2,n2=data('ex2_2.txt')
+x1=x1.reshape(int(len(x1)/n1), n1)
+x2=x2.reshape(int(len(x2)/n2), n2)
+f1=x1.mean(axis=0)
+f2=x2.mean(axis=0)
+print('f1 =', f1)
+print('f2 =', f2)
