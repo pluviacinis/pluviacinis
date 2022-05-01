@@ -1,0 +1,21 @@
+import numpy as np
+
+square = np.array([
+    [16, 3, 2, 13],
+    [5, 10, 11, 8],
+    [9, 6, 7, 12],
+    [4, 15, 14, 1]])
+sstol = square.sum(axis=1)
+sstrok = square.sum(axis=0)
+s1=square[:2, :2] #up left
+s2=square[:2, 2:] #up right
+s3=square[2:, :2] #down left
+s4=square[2:, 2:] #down right
+s5=square[1: 3:, 1: 3:] #central
+print('Сумма строк =', sstrok)
+print('Сумма столбцов =', sstol)
+print('Сумма верх. левого кв. =', np.sum(s1))
+print('Сумма верх правого кв. =', np.sum(s2))
+print('Сумма нижн. левого кв. =', np.sum(s3))
+print('Сумма нижн. правого кв. =', np.sum(s4))
+print('Сумма центр квадр =', np.sum(s5))
