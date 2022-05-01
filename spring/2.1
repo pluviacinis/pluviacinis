@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plt
+data1 = open("mutant.txt", "r").readlines()
+data2 = open("wild_type.txt", "r").readlines()
+n1= len(data1)
+n2 = len(data2)
+
+x1=[]
+x2=[]
+y1=[]
+y2=[]
+for i in range(1,n1):
+    k=data1[i].split()
+    l1=float(k[0])
+    l2=float(k[1])
+    x1.append(l1)
+    y1.append(l2)
+for i in range(1,n2):
+    k=data2[i].split()
+    l1=float(k[0])
+    l2=float(k[1])
+    x2.append(l1)
+    y2.append(l2)
+sp1 = plt.subplot(152)
+sp2 = plt.subplot(152)
+sp1.plot(x1,y1)
+sp2.plot(x2,y2)
+plt.title('fluorescence research')
+plt.xlabel('Concetration of ligand')
+plt.ylabel('fluorescence intencity')
+
+plt.show()
