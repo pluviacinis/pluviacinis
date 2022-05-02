@@ -1,0 +1,15 @@
+import numpy as np
+
+data = open('Cell_culture.txt', 'r').readlines()
+n=len(data)
+S=0
+dataf=[[0]*4 for i in range(1,n)]
+for i in range(1,n):
+    dataf[i-1]=tuple(data[i].strip().split('\t'))
+dataf=np.array(dataf, dtype=[('date',str, 10), ('name', str, 10), ('vol',int), ('com', str, 20)])
+apr5V=dataf[dataf['date']=='5-Apr']['vol']
+for i in range(len(apr5V)):
+               S=S+apr5V[i]
+apr9N=dataf[dataf['date']=='9-Apr']['name']
+print('Кол-во культуры за 5 апреля:', S)
+print('Имена заказавших 9 апреля:', apr9N)
