@@ -1,0 +1,16 @@
+import numpy as np
+
+n=int(input('n = '))
+square=np.random.randint(20, size=(n,n))
+square=np.array(square)
+squaresort=np.sort(square, axis=0)
+squareT=squaresort.T
+squareUnL=np.hstack((squaresort, squareT))
+squareUnC=np.vstack((squaresort, squareT))
+squareUnW=np.concatenate((squaresort, squareT), axis=None)
+print('Объединение построчно: \n', squareUnL)
+print('Объединение по cтолбцам: \n', squareUnC)
+print('Объединение без оси: \n', squareUnW)
+print('Транспонированная: \n', squareT)
+print('Сортированная: \n', squaresort)
+print('Изначальная: \n', square)
